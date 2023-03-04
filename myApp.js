@@ -1,6 +1,5 @@
 let express = require('express');
 let app = express();
-require('dotenv').config()
 
 console.log(process.env.MESSAGE_STYLE)
 
