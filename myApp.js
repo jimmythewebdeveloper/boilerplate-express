@@ -2,8 +2,6 @@ let express = require('express');
 let app = express();
 require('dotenv').config()
 
-console.log(process.env.MESSAGE_STYLE)
-
 app.use('/public', express.static(__dirname + '/public'))
 
 app.get('/', function(req, res) {
