@@ -6,6 +6,12 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/views/index.html');
+});
+
+app.use('/public', express.static(__dirname + '/public'));
+
 app.get('/:word/echo', (req, res) => {
     const { word } = req.params;
     res.json({
@@ -20,12 +26,6 @@ const middleware = (req, res, next) => {
 
 app.get('/now', middleware, (req, res) => {
     res.send( { time: req.time } );
-});
-
-app.use('/public', express.static(__dirname + '/public'))
-
-app.get('/', function(req, res) {
-    res.sendFile(__dirname + '/views/index.html');
 });
 
 app.get('/', function(req, res) {
