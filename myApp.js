@@ -28,14 +28,14 @@ app.get('/now', middleware, (req, res) => {
     res.send( { time: req.time } );
 });
 
-app.get('/', function(req, res) {
-    res.send('Hello Express');
-});
-
 app.get('/json', (req, res) => {
     process.env.MESSAGE_STYLE === "uppercase" 
         ? res.json({ message: "Hello json".toUpperCase() })
         : res.json({ message: "Hello json" });
+});
+
+app.get('/', function(req, res) {
+    res.send('Hello Express');
 });
 
 
