@@ -1,6 +1,15 @@
 let express = require('express');
 let app = express();
 
+const middleware = (req, res, next) => {
+    req.time = new Date().toString();
+    next();
+}
+
+app.get('/now', middleware, (req, res) => {
+    res.send( { time: req.time } );
+})
+
 app.use((req, res, next) => {
     console.log( `${req.method} ${req.path} - ${req.ip}` );
     next();
