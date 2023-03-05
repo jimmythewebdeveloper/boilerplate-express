@@ -1,6 +1,18 @@
 let express = require('express');
 let app = express();
 
+app.use((req, res, next) => {
+    console.log( `${req.method} ${req.path} - ${req.ip}` );
+    next();
+});
+
+app.get('/:word/echo', (req, res) => {
+    const { word } = req.param
+    res.json({
+        echo: word
+    });
+});
+
 const middleware = (req, res, next) => {
     req.time = new Date().toString();
     next();
@@ -8,11 +20,6 @@ const middleware = (req, res, next) => {
 
 app.get('/now', middleware, (req, res) => {
     res.send( { time: req.time } );
-});
-
-app.use((req, res, next) => {
-    console.log( `${req.method} ${req.path} - ${req.ip}` );
-    next();
 });
 
 app.use('/public', express.static(__dirname + '/public'))
