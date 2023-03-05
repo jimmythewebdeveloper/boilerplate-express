@@ -6,7 +6,7 @@ const middleware = (req, res, next) => {
     next();
 }
 
-app.get('/now', middleware, (req, res) => {
+app.get('/now', middleware(), (req, res) => {
     res.send( { time: req.time } );
 })
 
