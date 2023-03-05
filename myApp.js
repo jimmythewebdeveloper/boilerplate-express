@@ -7,7 +7,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/:word/echo', (req, res) => {
-    const { word } = req.param
+    const { word } = req.params;
     res.json({
         echo: word
     });
@@ -37,29 +37,6 @@ app.get('/json', (req, res) => {
         ? res.json({ message: "Hello json".toUpperCase() })
         : res.json({ message: "Hello json" });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
  module.exports = app;
