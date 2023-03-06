@@ -17,13 +17,14 @@ app.use('/public', express.static(__dirname + '/public'));
 
 app.route('/name')
     .get((req, res) => {
-    const { first: firstname, last: lastname } = req.query;
-    res.json({
-        name: `${firstname} ${lastname}`
-    });
-})
+        const { first: firstname, last: lastname } = req.query;
+        res.json({
+            name: `${firstname} ${lastname}`
+        });
+    })
     .post((req, res) => {
         const { first: firstname, last: lastname } = req.body;
+        console.log(req.body.first, req.body.last)
         res.json({
             name: `${firstname} ${lastname}`
         });
