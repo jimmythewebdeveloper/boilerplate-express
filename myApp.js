@@ -24,8 +24,6 @@ app.route('/name')
     })
     .post((req, res) => {
         const { first: firstname, last: lastname } = req.body;
-        console.log(req.body.first, req.body.last);
-        console.log(req.body);
         res.json({
             name: `${firstname} ${lastname}`
         });
