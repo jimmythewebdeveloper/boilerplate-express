@@ -12,7 +12,8 @@ app.get('/', function(req, res) {
 
 app.use('/public', express.static(__dirname + '/public'));
 
-app.get('/name', (req, res) => {
+app.route('/name')
+    .get((req, res) => {
     const { first: firstname, last: lastname } = req.query;
     res.json({
         name: `${firstname} ${lastname}`
