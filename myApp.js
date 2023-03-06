@@ -6,6 +6,13 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get('/name', (req, res) => {
+    const { first: firstname, last: lastname } = req.query;
+    res.json({
+        name: `${firstname} ${lastname}`
+    });
+});
+
 app.get('/', function(req, res) {
     res.sendFile(__dirname + '/views/index.html');
 });
