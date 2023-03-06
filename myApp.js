@@ -12,38 +12,38 @@ app.get('/', function(req, res) {
 
 app.use('/public', express.static(__dirname + '/public'));
 
-// app.get('/name', (req, res) => {
-//     const { first: firstname, last: lastname } = req.query;
-//     res.json({
-//         name: `${firstname} ${lastname}`
-//     });
-// });
+app.get('/name', (req, res) => {
+    const { first: firstname, last: lastname } = req.query;
+    res.json({
+        name: `${firstname} ${lastname}`
+    });
+});
 
-// app.get('/:word/echo', (req, res) => {
-//     const { word } = req.params;
-//     res.json({
-//         echo: word
-//     });
-// });
+app.get('/:word/echo', (req, res) => {
+    const { word } = req.params;
+    res.json({
+        echo: word
+    });
+});
 
-// const middleware = (req, res, next) => {
-//     req.time = new Date().toString();
-//     next();
-// }
+const middleware = (req, res, next) => {
+    req.time = new Date().toString();
+    next();
+}
 
-// app.get('/now', middleware, (req, res) => {
-//     res.send( { time: req.time } );
-// });
+app.get('/now', middleware, (req, res) => {
+    res.send( { time: req.time } );
+});
 
-// app.get('/json', (req, res) => {
-//     process.env.MESSAGE_STYLE === "uppercase" 
-//         ? res.json({ message: "Hello json".toUpperCase() })
-//         : res.json({ message: "Hello json" });
-// });
+app.get('/json', (req, res) => {
+    process.env.MESSAGE_STYLE === "uppercase" 
+        ? res.json({ message: "Hello json".toUpperCase() })
+        : res.json({ message: "Hello json" });
+});
 
-// app.get('/', function(req, res) {
-//     res.send('Hello Express');
-// });
+app.get('/', function(req, res) {
+    res.send('Hello Express');
+});
 
 
  module.exports = app;
