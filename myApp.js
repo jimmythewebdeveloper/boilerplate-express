@@ -21,7 +21,13 @@ app.route('/name')
     res.json({
         name: `${firstname} ${lastname}`
     });
-});
+})
+    .post((req, res) => {
+        const { first: firstname, last: lastname } = req.body;
+        res.json({
+            name: `${firstname} ${lastname}`
+        });
+    });
 
 app.get('/:word/echo', (req, res) => {
     const { word } = req.params;
